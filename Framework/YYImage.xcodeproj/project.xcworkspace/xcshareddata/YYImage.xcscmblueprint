@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "7D036270E758B4C9CAAD42288C450F2518AF5495",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "497FFDFDB4AEB909526F7F78BF8A443B04B42706" : 0,
+    "7D036270E758B4C9CAAD42288C450F2518AF5495" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E21BEF2A-45AC-48B7-9E2A-AD8B846F6BBE",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "497FFDFDB4AEB909526F7F78BF8A443B04B42706" : "..",
+    "7D036270E758B4C9CAAD42288C450F2518AF5495" : "YYImage\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "YYImage",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Framework\/YYImage.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/hyperconnect\/azar-ios",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "497FFDFDB4AEB909526F7F78BF8A443B04B42706"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/hyperconnect\/YYImage",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7D036270E758B4C9CAAD42288C450F2518AF5495"
+    }
+  ]
+}

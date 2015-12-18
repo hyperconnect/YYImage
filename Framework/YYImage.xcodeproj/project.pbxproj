@@ -8,15 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		D9D41AE91BD1033700CD8EBF /* YYAnimatedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = D9D41ACF1BD1033700CD8EBF /* YYAnimatedImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D9D41AEA1BD1033700CD8EBF /* YYAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D41AD01BD1033700CD8EBF /* YYAnimatedImageView.m */; settings = {ASSET_TAGS = (); }; };
+		D9D41AEA1BD1033700CD8EBF /* YYAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D41AD01BD1033700CD8EBF /* YYAnimatedImageView.m */; };
 		D9D41AEB1BD1033700CD8EBF /* YYFrameImage.h in Headers */ = {isa = PBXBuildFile; fileRef = D9D41AD11BD1033700CD8EBF /* YYFrameImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D9D41AEC1BD1033700CD8EBF /* YYFrameImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D41AD21BD1033700CD8EBF /* YYFrameImage.m */; settings = {ASSET_TAGS = (); }; };
+		D9D41AEC1BD1033700CD8EBF /* YYFrameImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D41AD21BD1033700CD8EBF /* YYFrameImage.m */; };
 		D9D41AED1BD1033700CD8EBF /* YYImage.h in Headers */ = {isa = PBXBuildFile; fileRef = D9D41AD31BD1033700CD8EBF /* YYImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D9D41AEE1BD1033700CD8EBF /* YYImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D41AD41BD1033700CD8EBF /* YYImage.m */; settings = {ASSET_TAGS = (); }; };
+		D9D41AEE1BD1033700CD8EBF /* YYImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D41AD41BD1033700CD8EBF /* YYImage.m */; };
 		D9D41AF11BD1033700CD8EBF /* YYImageCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D9D41AD71BD1033700CD8EBF /* YYImageCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D9D41AF21BD1033700CD8EBF /* YYImageCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D41AD81BD1033700CD8EBF /* YYImageCoder.m */; settings = {ASSET_TAGS = (); }; };
+		D9D41AF21BD1033700CD8EBF /* YYImageCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D41AD81BD1033700CD8EBF /* YYImageCoder.m */; };
 		D9D41AF31BD1033700CD8EBF /* YYSpriteSheetImage.h in Headers */ = {isa = PBXBuildFile; fileRef = D9D41AD91BD1033700CD8EBF /* YYSpriteSheetImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D9D41AF41BD1033700CD8EBF /* YYSpriteSheetImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D41ADA1BD1033700CD8EBF /* YYSpriteSheetImage.m */; settings = {ASSET_TAGS = (); }; };
+		D9D41AF41BD1033700CD8EBF /* YYSpriteSheetImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D41ADA1BD1033700CD8EBF /* YYSpriteSheetImage.m */; };
 		D9D41AFB1BD10CE700CD8EBF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D41AFA1BD10CE700CD8EBF /* UIKit.framework */; };
 		D9D41AFD1BD10CEC00CD8EBF /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D41AFC1BD10CEC00CD8EBF /* CoreFoundation.framework */; };
 		D9D41AFF1BD10CF200CD8EBF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D41AFE1BD10CF200CD8EBF /* QuartzCore.framework */; };
@@ -25,6 +25,15 @@
 		D9D41B051BD10D0700CD8EBF /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D41B041BD10D0700CD8EBF /* ImageIO.framework */; };
 		D9D41B071BD10D0D00CD8EBF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D41B061BD10D0D00CD8EBF /* MobileCoreServices.framework */; };
 		D9D41B091BD10D1E00CD8EBF /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D41B081BD10D1E00CD8EBF /* AssetsLibrary.framework */; };
+		FB3184EE1C23EC4900E5D1A7 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = FB3184E51C23EC4900E5D1A7 /* config.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FB3184EF1C23EC4900E5D1A7 /* decode.h in Headers */ = {isa = PBXBuildFile; fileRef = FB3184E61C23EC4900E5D1A7 /* decode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FB3184F01C23EC4900E5D1A7 /* demux.h in Headers */ = {isa = PBXBuildFile; fileRef = FB3184E71C23EC4900E5D1A7 /* demux.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FB3184F11C23EC4900E5D1A7 /* encode.h in Headers */ = {isa = PBXBuildFile; fileRef = FB3184E81C23EC4900E5D1A7 /* encode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FB3184F21C23EC4900E5D1A7 /* format_constants.h in Headers */ = {isa = PBXBuildFile; fileRef = FB3184E91C23EC4900E5D1A7 /* format_constants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FB3184F31C23EC4900E5D1A7 /* mux.h in Headers */ = {isa = PBXBuildFile; fileRef = FB3184EA1C23EC4900E5D1A7 /* mux.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FB3184F41C23EC4900E5D1A7 /* mux_types.h in Headers */ = {isa = PBXBuildFile; fileRef = FB3184EB1C23EC4900E5D1A7 /* mux_types.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FB3184F51C23EC4900E5D1A7 /* types.h in Headers */ = {isa = PBXBuildFile; fileRef = FB3184EC1C23EC4900E5D1A7 /* types.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FB3184F61C23EC4900E5D1A7 /* WebP in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3184ED1C23EC4900E5D1A7 /* WebP */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +57,15 @@
 		D9D41B041BD10D0700CD8EBF /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		D9D41B061BD10D0D00CD8EBF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		D9D41B081BD10D1E00CD8EBF /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		FB3184E51C23EC4900E5D1A7 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		FB3184E61C23EC4900E5D1A7 /* decode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = decode.h; sourceTree = "<group>"; };
+		FB3184E71C23EC4900E5D1A7 /* demux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = demux.h; sourceTree = "<group>"; };
+		FB3184E81C23EC4900E5D1A7 /* encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encode.h; sourceTree = "<group>"; };
+		FB3184E91C23EC4900E5D1A7 /* format_constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = format_constants.h; sourceTree = "<group>"; };
+		FB3184EA1C23EC4900E5D1A7 /* mux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mux.h; sourceTree = "<group>"; };
+		FB3184EB1C23EC4900E5D1A7 /* mux_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mux_types.h; sourceTree = "<group>"; };
+		FB3184EC1C23EC4900E5D1A7 /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
+		FB3184ED1C23EC4900E5D1A7 /* WebP */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = WebP; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +74,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9D41B031BD10CFA00CD8EBF /* libz.tbd in Frameworks */,
+				FB3184F61C23EC4900E5D1A7 /* WebP in Frameworks */,
 				D9D41B091BD10D1E00CD8EBF /* AssetsLibrary.framework in Frameworks */,
 				D9D41B071BD10D0D00CD8EBF /* MobileCoreServices.framework in Frameworks */,
 				D9D41B051BD10D0700CD8EBF /* ImageIO.framework in Frameworks */,
@@ -72,6 +91,7 @@
 		D9D41AAC1BD102F300CD8EBF = {
 			isa = PBXGroup;
 			children = (
+				FB3184E41C23EC4900E5D1A7 /* webp */,
 				D9D41AC31BD1033700CD8EBF /* YYImage */,
 				D9D41AF91BD1033C00CD8EBF /* Supporting Files */,
 				D9D41AB71BD102F300CD8EBF /* Products */,
@@ -120,6 +140,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		FB3184E41C23EC4900E5D1A7 /* webp */ = {
+			isa = PBXGroup;
+			children = (
+				FB3184E51C23EC4900E5D1A7 /* config.h */,
+				FB3184E61C23EC4900E5D1A7 /* decode.h */,
+				FB3184E71C23EC4900E5D1A7 /* demux.h */,
+				FB3184E81C23EC4900E5D1A7 /* encode.h */,
+				FB3184E91C23EC4900E5D1A7 /* format_constants.h */,
+				FB3184EA1C23EC4900E5D1A7 /* mux.h */,
+				FB3184EB1C23EC4900E5D1A7 /* mux_types.h */,
+				FB3184EC1C23EC4900E5D1A7 /* types.h */,
+				FB3184ED1C23EC4900E5D1A7 /* WebP */,
+			);
+			name = webp;
+			path = ../YYImage/webp;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -127,11 +164,19 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB3184F31C23EC4900E5D1A7 /* mux.h in Headers */,
+				FB3184F01C23EC4900E5D1A7 /* demux.h in Headers */,
+				FB3184EF1C23EC4900E5D1A7 /* decode.h in Headers */,
+				FB3184F11C23EC4900E5D1A7 /* encode.h in Headers */,
 				D9D41AEB1BD1033700CD8EBF /* YYFrameImage.h in Headers */,
 				D9D41AE91BD1033700CD8EBF /* YYAnimatedImageView.h in Headers */,
+				FB3184EE1C23EC4900E5D1A7 /* config.h in Headers */,
+				FB3184F51C23EC4900E5D1A7 /* types.h in Headers */,
 				D9D41AF11BD1033700CD8EBF /* YYImageCoder.h in Headers */,
 				D9D41AED1BD1033700CD8EBF /* YYImage.h in Headers */,
 				D9D41AF31BD1033700CD8EBF /* YYSpriteSheetImage.h in Headers */,
+				FB3184F21C23EC4900E5D1A7 /* format_constants.h in Headers */,
+				FB3184F41C23EC4900E5D1A7 /* mux_types.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

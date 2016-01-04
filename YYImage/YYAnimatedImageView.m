@@ -485,6 +485,10 @@ typedef NS_ENUM(NSUInteger, YYAnimagedImageType) {
         double alpha = [image animatedImageAlphaAtIndex:nextIndex];
         [self setAlpha:alpha];
     }
+    if (_delegate != nil && [_delegate respondsToSelector:@selector(onFrameRendered:)]) {
+        [_delegate onFrameRendered:nextIndex];
+    }
+
     LOCK(
          bufferedImage = buffer[@(nextIndex)];
          if (bufferedImage) {

@@ -11,6 +11,15 @@
 
 #import <UIKit/UIKit.h>
 
+
+/// added by dgoon
+@protocol YYAnimatedImageDelegate <NSObject>
+@optional
+- (void)onFrameRendered:(NSUInteger)index;
+@end
+
+
+
 /**
  An image view for displaying animated image.
  
@@ -78,8 +87,11 @@
  */
 @property (nonatomic, assign) NSUInteger maxBufferSize;
 
-@end
+/// added by dgoon
+@property (nonatomic, weak) id<YYAnimatedImageDelegate> delegate;
 
+
+@end
 
 
 /**
@@ -113,6 +125,7 @@
 /// @param index  Frame index (zero based).
 - (NSTimeInterval)animatedImageDurationAtIndex:(NSUInteger)index;
 
+/// added by dgoon
 - (double)animatedImageAlphaAtIndex:(NSUInteger)index;
 
 @optional
@@ -121,3 +134,10 @@
 /// It may used to display sprite animation with a single image (sprite sheet).
 - (CGRect)animatedImageContentsRectAtIndex:(NSUInteger)index;
 @end
+
+
+
+
+
+
+

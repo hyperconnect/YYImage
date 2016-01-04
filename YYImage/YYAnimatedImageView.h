@@ -115,6 +115,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param index  Frame index (zero based).
 - (NSTimeInterval)animatedImageDurationAtIndex:(NSUInteger)index;
 
+- (double)animatedImageAlphaAtIndex:(NSUInteger)index;
+
 @optional
 /// A rectangle in image coordinates defining the subrectangle of the image that
 /// will be displayed. The rectangle should not outside the image's bounds.

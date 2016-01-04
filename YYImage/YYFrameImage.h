@@ -104,6 +104,9 @@ NS_ASSUME_NONNULL_BEGIN
                                  frameDurations:(NSArray *)frameDurations
                                       loopCount:(NSUInteger)loopCount;
 
+/// added by dgoon
+- (instancetype)initWithImagePaths:(NSArray *)paths frameDurations:(NSArray *)frameDurations alphas:(NSArray *)alphas loopCount:(NSUInteger)loopCount;
+- (instancetype)initWithImageDataArray:(NSArray *)dataArray frameDurations:(NSArray *)frameDurations alphas:(NSArray *)alphas loopCount:(NSUInteger)loopCount;
 @end
 
 NS_ASSUME_NONNULL_END

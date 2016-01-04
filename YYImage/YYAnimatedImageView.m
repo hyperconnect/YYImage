@@ -481,6 +481,10 @@ typedef NS_ENUM(NSUInteger, YYAnimagedImageType) {
         delay = [image animatedImageDurationAtIndex:nextIndex];
         if (_time > delay) _time = delay; // do not jump over frame
     }
+    if ([image respondsToSelector:@selector(animatedImageAlphaAtIndex:)]) {
+        double alpha = [image animatedImageAlphaAtIndex:nextIndex];
+        [self setAlpha:alpha];
+    }
     LOCK(
          bufferedImage = buffer[@(nextIndex)];
          if (bufferedImage) {

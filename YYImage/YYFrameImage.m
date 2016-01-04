@@ -50,6 +50,7 @@ static CGFloat _NSStringPathScale(NSString *string) {
     NSArray *_imagePaths;
     NSArray *_imageDatas;
     NSArray *_frameDurations;
+    NSArray *_alphas;
 }
 
 - (instancetype)initWithImagePaths:(NSArray *)paths oneFrameDuration:(NSTimeInterval)oneFrameDuration loopCount:(NSUInteger)loopCount {
@@ -75,7 +76,13 @@ static CGFloat _NSStringPathScale(NSString *string) {
     _imagePaths = paths.copy;
     _frameDurations = frameDurations.copy;
     _loopCount = loopCount;
-    
+
+    NSMutableArray *alphas = [NSMutableArray new];
+    for (int i = 0, max = (int)paths.count; i < max; i++) {
+        [alphas addObject:@(1.0)];
+    }
+    _alphas = alphas.copy;
+
     return self;
 }
 
@@ -101,7 +108,54 @@ static CGFloat _NSStringPathScale(NSString *string) {
     _imageDatas = dataArray.copy;
     _frameDurations = frameDurations.copy;
     _loopCount = loopCount;
-    
+
+    NSMutableArray *alphas = [NSMutableArray new];
+    for (int i = 0, max = (int)dataArray.count; i < max; i++) {
+        [alphas addObject:@(1.0)];
+    }
+    _alphas = alphas.copy;
+
+    return self;
+}
+
+/// added by dgoon
+- (instancetype)initWithImagePaths:(NSArray *)paths frameDurations:(NSArray *)frameDurations alphas:(NSArray *)alphas loopCount:(NSUInteger)loopCount {
+    if (paths.count == 0) return nil;
+    if (paths.count != frameDurations.count) return nil;
+    if (paths.count != frameDurations.count || paths.count != alphas.count) return nil;
+
+    NSString *firstPath = paths[0];
+    NSData *firstData = [NSData dataWithContentsOfFile:firstPath];
+    CGFloat scale = _NSStringPathScale(firstPath);
+    UIImage *firstCG = [[[UIImage alloc] initWithData:firstData] yy_imageByDecoded];
+    self = [self initWithCGImage:firstCG.CGImage scale:scale orientation:UIImageOrientationUp];
+    if (!self) return nil;
+    long frameByte = CGImageGetBytesPerRow(firstCG.CGImage) * CGImageGetHeight(firstCG.CGImage);
+    _oneFrameBytes = (NSUInteger)frameByte;
+    _imagePaths = paths.copy;
+    _frameDurations = frameDurations.copy;
+    _loopCount = loopCount;
+    _alphas = alphas.copy;
+
+    return self;
+
+}
+- (instancetype)initWithImageDataArray:(NSArray *)dataArray frameDurations:(NSArray *)frameDurations alphas:(NSArray *)alphas loopCount:(NSUInteger)loopCount {
+
+    if (dataArray.count == 0) return nil;
+    if (dataArray.count != frameDurations.count || dataArray.count != alphas.count) return nil;
+
+    NSData *firstData = dataArray[0];
+    CGFloat scale = [UIScreen mainScreen].scale;
+    UIImage *firstCG = [[[UIImage alloc] initWithData:firstData] yy_imageByDecoded];
+    self = [self initWithCGImage:firstCG.CGImage scale:scale orientation:UIImageOrientationUp];
+    if (!self) return nil;
+    long frameByte = CGImageGetBytesPerRow(firstCG.CGImage) * CGImageGetHeight(firstCG.CGImage);
+    _oneFrameBytes = (NSUInteger)frameByte;
+    _imageDatas = dataArray.copy;
+    _frameDurations = frameDurations.copy;
+    _alphas = alphas.copy;
+    _loopCount = loopCount;
     return self;
 }
 
@@ -144,6 +198,13 @@ static CGFloat _NSStringPathScale(NSString *string) {
 - (NSTimeInterval)animatedImageDurationAtIndex:(NSUInteger)index {
     if (index >= _frameDurations.count) return 0;
     NSNumber *num = _frameDurations[index];
+    return [num doubleValue];
+}
+
+/// added by dgoon
+- (double)animatedImageAlphaAtIndex:(NSUInteger)index {
+    if (index >= _frameDurations.count) return 1.0;
+    NSNumber *num = _alphas[index];
     return [num doubleValue];
 }
 

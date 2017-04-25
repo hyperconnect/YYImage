@@ -11,12 +11,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => 'https://github.com/hyperconnect/YYImage.git', :branch => 'cocoapods' }
 
   s.requires_arc = true
-  s.source_files = 'YYImage/*.{h,m}'
-  s.public_header_files = 'YYImage/*.{h}'
-
-  s.libraries = 'z'
-  s.frameworks = 'UIKit', 'CoreFoundation', 'QuartzCore', 'AssetsLibrary', 'ImageIO', 'Accelerate', 'MobileCoreServices'
-  s.ios.vendored_frameworks = 'Vendor/WebP.framework'
+  s.default_subspec = 'Core'
 
   s.subspec 'Core' do |core|
     core.source_files = 'YYImage/*.{h,m}'

@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'WebP' do |webp|
-    webp.dependency 'YYImage/Core'
+    webp.dependency 'YYImage/Core', s.version.to_s
     webp.ios.vendored_frameworks = 'Vendor/WebP.framework'
   end
 end

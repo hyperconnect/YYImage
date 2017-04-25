@@ -25,8 +25,15 @@ Pod::Spec.new do |s|
     webp.ios.vendored_frameworks = 'Vendor/WebP.framework'
   end
 
+  s.subspec 'Core' do |core|
+    core.source_files = 'YYImage/*.{h,m}'
+    core.public_header_files = 'YYImage/*.{h}'
+    core.libraries = 'z'
+    core.frameworks = 'UIKit', 'CoreFoundation', 'QuartzCore', 'AssetsLibrary', 'ImageIO', 'Accelerate', 'MobileCoreServices'
+  end
+
   s.subspec 'WebP' do |webp|
-    webp.dependency 'YYImage/Core', s.version.to_s
+    webp.dependency 'YYImage/Core'
     webp.ios.vendored_frameworks = 'Vendor/WebP.framework'
   end
 end

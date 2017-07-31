@@ -90,6 +90,9 @@
 /// added by dgoon
 @property (nonatomic, weak) id<YYAnimatedImageDelegate> delegate;
 
+/// added by chope
+@property (nonatomic, assign) NSInteger userDefinedLoopCount;
+
 
 @end
 

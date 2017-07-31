@@ -91,6 +91,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// added by dgoon
 @property (nonatomic, weak) id<YYAnimatedImageDelegate> delegate;
 
+/// added by chope
+@property (nonatomic, assign) NSInteger userDefinedLoopCount;
+
 
 @end
 

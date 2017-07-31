@@ -369,8 +369,13 @@ typedef NS_ENUM(NSUInteger, YYAnimatedImageType) {
         [self resetAnimated];
         _curAnimatedImage = newVisibleImage;
         _curFrame = newVisibleImage;
-        _totalLoop = _curAnimatedImage.animatedImageLoopCount;
         _totalFrameCount = _curAnimatedImage.animatedImageFrameCount;
+
+        if (_userDefinedLoopCount >= 0) {
+            _totalLoop = _userDefinedLoopCount;
+        } else {
+            _totalLoop = _curAnimatedImage.animatedImageLoopCount;
+        }
         [self calcMaxBufferCount];
     }
     [self setNeedsDisplay];
@@ -628,7 +633,15 @@ typedef NS_ENUM(NSUInteger, YYAnimatedImageType) {
     _runloopMode = runloopMode.copy;
 }
 
-#pragma mark - Override NSObject(NSKeyValueObservingCustomization)
+- (void)setUserDefinedLoopCount:(NSInteger)userDefinedLoopCount {
+    _userDefinedLoopCount = userDefinedLoopCount;
+
+    UIImage *image = self.image;
+    self.image = nil;
+    self.image = image;
+}
+
+#pragma mark - Overrice NSObject(NSKeyValueObservingCustomization)
 
 + (BOOL)automaticallyNotifiesObserversForKey:(NSString *)key {
     if ([key isEqualToString:@"currentAnimatedImageIndex"]) {

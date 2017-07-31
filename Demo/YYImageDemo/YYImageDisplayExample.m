@@ -102,6 +102,7 @@
 
 - (void)addImage:(UIImage *)image size:(CGSize)size text:(NSString *)text {
     YYAnimatedImageView *imageView = [[YYAnimatedImageView alloc] initWithImage:image];
+//    imageView.userDefinedLoopCount = 2;
     
     if (size.width > 0 && size.height > 0) imageView.size = size;
     imageView.centerX = self.view.width / 2;

@@ -39,7 +39,7 @@ static int64_t _YYDeviceMemoryFree() {
     vm_size_t page_size;
     vm_statistics_data_t vm_stat;
     kern_return_t kern;
-    
+
     kern = host_page_size(host_port, &page_size);
     if (kern != KERN_SUCCESS) return -1;
     kern = host_statistics(host_port, HOST_VM_INFO, (host_info_t)&vm_stat, &host_size);
@@ -124,27 +124,27 @@ typedef NS_ENUM(NSUInteger, YYAnimagedImageType) {
 @interface YYAnimatedImageView() {
     @package
     UIImage <YYAnimatedImage> *_curAnimatedImage;
-    
+
     dispatch_once_t _onceToken;
     OSSpinLock _lock; ///< lock for _buffer
     NSOperationQueue *_requestQueue; ///< image request queue, serial
-    
+
     CADisplayLink *_link; ///< ticker for change frame
     NSTimeInterval _time; ///< time after last frame
-    
+
     UIImage *_curFrame; ///< current frame to display
     NSUInteger _curIndex; ///< current frame index (from 0)
     NSUInteger _totalFrameCount; ///< total frame count
-    
+
     BOOL _loopEnd; ///< weather the loop is end.
     NSUInteger _curLoop; ///< current loop count (from 0)
     NSUInteger _totalLoop; ///< total loop count, 0 means infinity
-    
+
     NSMutableDictionary *_buffer; ///< frame buffer
     BOOL _bufferMiss; ///< whether miss frame on last opportunity
     NSUInteger _maxBufferCount; ///< maximum buffer count
     NSInteger _incrBufferCount; ///< current allowed buffer count (will increase by step)
-    
+
     CGRect _curContentsRect;
     BOOL _curImageHasContentsRect; ///< image has implementated "animatedImageContentsRectAtIndex:"
 }
@@ -236,11 +236,11 @@ typedef NS_ENUM(NSUInteger, YYAnimagedImageType) {
             [_link addToRunLoop:[NSRunLoop mainRunLoop] forMode:_runloopMode];
         }
         _link.paused = YES;
-        
+
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryWarning:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
     });
-    
+
     [_requestQueue cancelAllOperations];
     LOCK(
          if (_buffer.count) {
@@ -359,7 +359,7 @@ typedef NS_ENUM(NSUInteger, YYAnimagedImageType) {
         CGRect rect = [((UIImage<YYAnimatedImage> *) newVisibleImage) animatedImageContentsRectAtIndex:0];
         [self setContentsRect:rect forImage:newVisibleImage];
     }
-    
+
     if (newImageFrameCount > 1) {
         [self resetAnimated];
         _curAnimatedImage = newVisibleImage;
@@ -381,7 +381,7 @@ typedef NS_ENUM(NSUInteger, YYAnimagedImageType) {
 - (void)calcMaxBufferCount {
     NSUInteger bytes = _curAnimatedImage.animatedImageBytesPerFrame;
     if (bytes == 0) bytes = 1;
-    
+
     int64_t total = _YYDeviceMemoryTotal();
     int64_t free = _YYDeviceMemoryFree();
     int64_t max = MIN(total * 0.2, free * 0.6);
@@ -461,13 +461,13 @@ typedef NS_ENUM(NSUInteger, YYAnimagedImageType) {
     UIImage *bufferedImage = nil;
     NSUInteger nextIndex = (_curIndex + 1) % _totalFrameCount;
     BOOL bufferIsFull = NO;
-    
+
     if (!image) return;
     if (_loopEnd) { // view will keep in last frame
         [self stopAnimating];
         return;
     }
-    
+
     NSTimeInterval delay = 0;
     if (!_bufferMiss) {
         _time += link.duration;
@@ -480,6 +480,10 @@ typedef NS_ENUM(NSUInteger, YYAnimagedImageType) {
                 _loopEnd = YES;
                 [self stopAnimating];
                 [self.layer setNeedsDisplay]; // let system call `displayLayer:` before runloop sleep
+
+                if (_delegate != nil && [_delegate respondsToSelector:@selector(onFrameRendered:)]) {
+                    [_delegate onFrameRendered:nextIndex];
+                }
                 return; // stop at last frame
             }
         }
@@ -517,11 +521,11 @@ typedef NS_ENUM(NSUInteger, YYAnimagedImageType) {
              _bufferMiss = YES;
          }
     )//LOCK
-    
+
     if (!_bufferMiss) {
         [self.layer setNeedsDisplay]; // let system call `displayLayer:` before runloop sleep
     }
-    
+
     if (!bufferIsFull && _requestQueue.operationCount == 0) { // if some work not finished, wait for next opportunity
         _YYAnimatedImageViewFetchOperation *operation = [_YYAnimatedImageViewFetchOperation new];
         operation.view = self;
@@ -582,7 +586,7 @@ typedef NS_ENUM(NSUInteger, YYAnimagedImageType) {
     if (!_curAnimatedImage) return;
     if (currentAnimatedImageIndex >= _curAnimatedImage.animatedImageFrameCount) return;
     if (_curIndex == currentAnimatedImageIndex) return;
-    
+
     void (^block)() = ^{
         LOCK(
              [_requestQueue cancelAllOperations];
@@ -600,7 +604,7 @@ typedef NS_ENUM(NSUInteger, YYAnimagedImageType) {
              [self.layer setNeedsDisplay];
         )//LOCK
     };
-    
+
     if (pthread_main_np()) {
         block();
     } else {
@@ -649,7 +653,7 @@ typedef NS_ENUM(NSUInteger, YYAnimagedImageType) {
     _runloopMode = [aDecoder decodeObjectForKey:@"runloopMode"];
     if (_runloopMode.length == 0) _runloopMode = NSRunLoopCommonModes;
     _autoPlayAnimatedImage = [aDecoder decodeBoolForKey:@"autoPlayAnimatedImage"];
-    
+
     UIImage *image = [aDecoder decodeObjectForKey:@"YYAnimatedImage"];
     UIImage *highlightedImage = [aDecoder decodeObjectForKey:@"YYHighlightedAnimatedImage"];
     if (image) {
@@ -667,12 +671,12 @@ typedef NS_ENUM(NSUInteger, YYAnimagedImageType) {
     [super encodeWithCoder:aCoder];
     [aCoder encodeObject:_runloopMode forKey:@"runloopMode"];
     [aCoder encodeBool:_autoPlayAnimatedImage forKey:@"autoPlayAnimatedImage"];
-    
+
     BOOL ani, multi;
     ani = [self.image conformsToProtocol:@protocol(YYAnimatedImage)];
     multi = (ani && ((UIImage <YYAnimatedImage> *)self.image).animatedImageFrameCount > 1);
     if (multi) [aCoder encodeObject:self.image forKey:@"YYAnimatedImage"];
-    
+
     ani = [self.highlightedImage conformsToProtocol:@protocol(YYAnimatedImage)];
     multi = (ani && ((UIImage <YYAnimatedImage> *)self.highlightedImage).animatedImageFrameCount > 1);
     if (multi) [aCoder encodeObject:self.highlightedImage forKey:@"YYHighlightedAnimatedImage"];

@@ -30,7 +30,7 @@ OSSpinLockUnlock(&view->_lock);
 static int64_t _YYDeviceMemoryTotal() {
     int64_t mem = [[NSProcessInfo processInfo] physicalMemory];
     if (mem < -1) mem = -1;
-        return mem;
+    return mem;
 }
 
 static int64_t _YYDeviceMemoryFree() {
@@ -252,7 +252,7 @@ typedef NS_ENUM(NSUInteger, YYAnimagedImageType) {
                  [holder class];
              });
          }
-    );
+         );
     _link.paused = YES;
     _time = 0;
     if (_curIndex != 0) {
@@ -438,7 +438,7 @@ typedef NS_ENUM(NSUInteger, YYAnimagedImageType) {
                      [_buffer removeObjectForKey:key];
                  }
              }
-        )//LOCK
+             )//LOCK
     }];
 }
 
@@ -452,7 +452,7 @@ typedef NS_ENUM(NSUInteger, YYAnimagedImageType) {
                  [_buffer removeObjectForKey:key];
              }
          }
-     )//LOCK
+         )//LOCK
 }
 
 - (void)step:(CADisplayLink *)link {
@@ -480,10 +480,6 @@ typedef NS_ENUM(NSUInteger, YYAnimagedImageType) {
                 _loopEnd = YES;
                 [self stopAnimating];
                 [self.layer setNeedsDisplay]; // let system call `displayLayer:` before runloop sleep
-
-                if (_delegate != nil && [_delegate respondsToSelector:@selector(onFrameRendered:)]) {
-                    [_delegate onFrameRendered:nextIndex];
-                }
                 return; // stop at last frame
             }
         }
@@ -493,9 +489,6 @@ typedef NS_ENUM(NSUInteger, YYAnimagedImageType) {
     if ([image respondsToSelector:@selector(animatedImageAlphaAtIndex:)]) {
         double alpha = [image animatedImageAlphaAtIndex:nextIndex];
         [self setAlpha:alpha];
-    }
-    if (_delegate != nil && [_delegate respondsToSelector:@selector(onFrameRendered:)]) {
-        [_delegate onFrameRendered:nextIndex];
     }
 
     LOCK(
@@ -507,6 +500,13 @@ typedef NS_ENUM(NSUInteger, YYAnimagedImageType) {
              [self willChangeValueForKey:@"currentAnimatedImageIndex"];
              _curIndex = nextIndex;
              [self didChangeValueForKey:@"currentAnimatedImageIndex"];
+
+             if (_delegate != nil && [_delegate respondsToSelector:@selector(onFrameRendered:)]) {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     [_delegate onFrameRendered:nextIndex];
+                 });
+             }
+
              _curFrame = bufferedImage == (id)[NSNull null] ? nil : bufferedImage;
              if (_curImageHasContentsRect) {
                  _curContentsRect = [image animatedImageContentsRectAtIndex:_curIndex];
@@ -520,7 +520,7 @@ typedef NS_ENUM(NSUInteger, YYAnimagedImageType) {
          } else {
              _bufferMiss = YES;
          }
-    )//LOCK
+         )//LOCK
 
     if (!_bufferMiss) {
         [self.layer setNeedsDisplay]; // let system call `displayLayer:` before runloop sleep
@@ -602,7 +602,7 @@ typedef NS_ENUM(NSUInteger, YYAnimagedImageType) {
              _loopEnd = NO;
              _bufferMiss = NO;
              [self.layer setNeedsDisplay];
-        )//LOCK
+             )//LOCK
     };
 
     if (pthread_main_np()) {

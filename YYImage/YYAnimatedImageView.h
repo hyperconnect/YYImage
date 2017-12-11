@@ -139,13 +139,4 @@ NS_ASSUME_NONNULL_BEGIN
 - (CGRect)animatedImageContentsRectAtIndex:(NSUInteger)index;
 @end
 
-<<<<<<< HEAD
 NS_ASSUME_NONNULL_END
-=======
-
-
-
-
-
-
->>>>>>> YYAnimatedImageView 의 렌더링 이벤트를 delegate를 통해 외부로 전달
